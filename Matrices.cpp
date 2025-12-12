@@ -145,4 +145,4 @@ namespace Matrices
 			(*this)(1, j) = yShift;
 		}
 	}
-}
+} 
