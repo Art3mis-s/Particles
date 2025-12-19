@@ -269,33 +269,6 @@ void Particle::unitTests()
 	
 	    translate(dx, dy);
 	
-	    // ----- Aurora color blending -----
-	    float lifeRatio = m_ttl / TTL;
-	    if (lifeRatio < 0.f) lifeRatio = 0.f;
-	    if (lifeRatio > 1.f) lifeRatio = 1.f;
-	
-	    sf::Color auroraColor(120, 190, 255);
-	    sf::Color white(255, 255, 255);
-	
-	    float blend = sqrt(lifeRatio);
-	
-	    sf::Uint8 r = white.r * (1 - blend) + auroraColor.r * blend;
-	    sf::Uint8 g = white.g * (1 - blend) + auroraColor.g * blend;
-	    sf::Uint8 b = white.b * (1 - blend) + auroraColor.b * blend;
-	    sf::Uint8 a = static_cast<sf::Uint8>(255 * lifeRatio);
-	
-	    m_color1 = sf::Color(r, g, b, a);
-	    m_color2 = sf::Color(r, g, b, static_cast<sf::Uint8>(a * 0.8f));
-	
-	    // ----- Ground bounce -----
-	    float groundY = -m_cartesianPlane.getSize().y / 2.0f;
-	
-	    if (m_centerCoordinate.y <= groundY)
-	    {
-	        float correction = groundY - m_centerCoordinate.y;
-	        translate(0.0, correction);
-	        m_vy = -m_vy * 0.6f;
-	    }
 	}
 
 
@@ -327,6 +300,7 @@ void Particle::unitTests()
         // 4. Draw the VertexArray
         target.draw(lines);
     }
+
 
 
 
