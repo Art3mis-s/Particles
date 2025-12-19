@@ -7,30 +7,6 @@ using namespace Matrices;
 using namespace sf;
 using namespace std;
 
-static sf::Color hsvToRgb(float h, float s, float v, sf::Uint8 a = 255)
-{
-    h = fmod(h, 360.f);
-    if (h < 0) h += 360.f;
-
-    float c = v * s;
-    float x = c * (1 - fabs(fmod(h / 60.f, 2) - 1));
-    float m = v - c;
-
-    float r=0, g=0, b=0;
-    if (h < 60)       { r=c; g=x; }
-    else if (h < 120) { r=x; g=c; }
-    else if (h < 180) { g=c; b=x; }
-    else if (h < 240) { g=x; b=c; }
-    else if (h < 300) { r=x; b=c; }
-    else              { r=c; b=x; }
-
-    return sf::Color(
-        (r+m)*255,
-        (g+m)*255,
-        (b+m)*255,
-        a
-    );
-}
 bool Particle::almostEqual(double a, double b, double eps)
 {
 	return fabs(a - b) < eps;
@@ -330,4 +306,5 @@ void Particle::unitTests()
         // 4. Draw the VertexArray
         target.draw(lines);
     }
+
 
